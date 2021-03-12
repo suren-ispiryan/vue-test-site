@@ -10,7 +10,7 @@
           <div class="col-md-4 columns mail">{{ this.user.email }}</div>
           <div class="col-md-3 columns avatar img-fluid"><img class="img-fluid" :src="this.user.avatar"></div>
         </div>
-h
+
       </div>
     </div>
   </div>
