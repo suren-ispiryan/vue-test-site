@@ -8,7 +8,13 @@
           <div class="col-md-2 columns name">{{ this.user.first_name }}</div>
           <div class="col-md-2 columns surname">{{ this.user.last_name }}</div>
           <div class="col-md-4 columns mail">{{ this.user.email }}</div>
-          <div class="col-md-3 columns avatar img-fluid"><img class="img-fluid" :src="this.user.avatar"></div>
+          <div class="col-md-1 columns avatar img-fluid">
+            <img class="img-fluid" :src="this.user.avatar">
+          </div>
+          <div class="col-md-2 columns edit">
+            <input type="button" class="btn btn-warning mr-2" value="modify" @click="modifyElement()">
+            <input type="button" class="btn btn-danger ml-2" value="delete" @click="deleteElement()">
+          </div>
         </div>
 
       </div>
@@ -27,6 +33,15 @@ export default {
 
   data: function() {
     return {
+
+    }
+  },
+
+  methods: {
+    modifyElement () {
+
+    },
+    deleteElement () {
 
     }
   }

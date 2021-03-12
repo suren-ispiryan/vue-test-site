@@ -26,7 +26,8 @@
             <div class="col-md-2 columnsExample name">name</div>
             <div class="col-md-2 columnsExample surname">surname</div>
             <div class="col-md-4 columnsExample mail">mail</div>
-            <div class="col-md-3 columnsExample avatar">avatar</div>
+            <div class="col-md-1 columnsExample avatar">avatar</div>
+            <div class="col-md-2 columnsExample avatar">edit</div>
           </div>
 
         </div>
