@@ -34,12 +34,25 @@
       </div>
     </div>
 
-<!-- component by example -->
-    <usersPageComponent v-for="(user, index) in this.users"
-                        v-bind:key="index"
-                        v-bind:index="index"
-                        v-bind:user="user"
-    />
+
+<!-- start pagination -->
+    <div class="card text-center m-3">
+      <div class="card-body">
+
+  <!-- component by example -->
+        <usersPageComponent v-for="(user, index) in this.users"
+                            v-bind:key="index"
+                            v-bind:index="index"
+                            v-bind:user="user"
+        />
+
+      </div>
+
+      <div class="card-footer pb-0 pt-3">
+        <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+      </div>
+    </div>
+<!-- end pagination -->
 
   </div>
 </template>
@@ -49,10 +62,14 @@ import Router from "@/router"
 import usersPageComponent from "@/components/usersPageComponent.vue"
 import Vue from "vue";
 
+
 export default {
   mounted() {
     Vue.axios.get('https://reqres.in/api/users?page=2').then((response) => {
       this.users = response.data.data
+// pagination
+      this.count.push(Math.ceil(this.users.length/2))
+      this.exampleItems = [...Array( this.count * 10)];
     })
   },
 
@@ -64,13 +81,23 @@ export default {
 
   data: function() {
     return {
-      users: []
+      users: [],
+// pagination
+      count: [],
+      exampleItems: [],
+      pageOfItems: []
     }
   },
+
 
   methods: {
     logOut() {
       Router.push('/')
+    },
+// pagination
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems;
     }
   }
 }
