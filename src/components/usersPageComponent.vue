@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid mt-2">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
 
@@ -84,10 +84,8 @@ export default {
    align-items: center;
    padding: 5px;
    color: green;
-   border-right: 1px black solid;
- }
- .rows{
-   border: 1px black solid;
+   border-bottom: 1px black solid;
+   border-left: 1px black solid;
  }
  .btn{
    max-width: 100px;
@@ -96,7 +94,9 @@ export default {
    padding: 5px 5px;
  }
  .edit{
+   border-right: 1px black solid;
    display: flex;
    flex-wrap: wrap;
  }
+
 </style>

@@ -27,29 +27,28 @@
             <div class="col-md-2 columnsExample surname">surname</div>
             <div class="col-md-4 columnsExample mail">mail</div>
             <div class="col-md-1 columnsExample avatar">avatar</div>
-            <div class="col-md-2 columnsExample avatar">edit</div>
+            <div class="col-md-2 columnsExample edit">edit</div>
           </div>
 
         </div>
       </div>
     </div>
 
+    <hr>
 
 <!-- start pagination -->
-    <div class="card text-center m-3">
-      <div class="card-body">
-
-  <!-- component by example -->
+    <div class="card text-center">
+      <div class="card-body p-0">
+    <!-- component by example -->
         <usersPageComponent v-for="(user, index) in this.users"
                             v-bind:key="index"
                             v-bind:index="index"
-                            v-bind:user="user"
-        />
-
+                            v-bind:user="user">
+        </usersPageComponent>
       </div>
 
-      <div class="card-footer pb-0 pt-3">
-        <jw-pagination :items="exampleItems" @changePage="onChangePage"></jw-pagination>
+      <div class="card-footer pb-3 pt-5">
+        <jw-pagination :pageSize="2" :items="users" @changePage="onChangePage"></jw-pagination>
       </div>
     </div>
 <!-- end pagination -->
@@ -60,17 +59,22 @@
 <script>
 import Router from "@/router"
 import usersPageComponent from "@/components/usersPageComponent.vue"
-import Vue from "vue";
-
+import Vue from "vue"
 
 export default {
   mounted() {
-    Vue.axios.get('https://reqres.in/api/users?page=2').then((response) => {
+    Vue .axios.get('https://reqres.in/api/users?page=2').then((response) => {
       this.users = response.data.data
 // pagination
-      this.count.push(Math.ceil(this.users.length/2))
+     /*this.count.push(Math.ceil(this.users.length/2))*/
       this.exampleItems = [...Array( this.count * 10)];
     })
+  },
+
+  computed: {
+    getUser() {
+      return this.users
+    }
   },
 
   name: "userPage",
@@ -96,7 +100,6 @@ export default {
     },
 // pagination
     onChangePage(pageOfItems) {
-      // update page of items
       this.pageOfItems = pageOfItems;
     }
   }
@@ -116,5 +119,14 @@ export default {
  }
  .rows{
    border: 1px black solid;
+ }
+ .columnsExample{
+   border-right: 1px black solid;
+ }
+ .edit{
+   border-right: 0px black solid;
+ }
+ .card-body{
+   border-top: 1px black solid;
  }
 </style>

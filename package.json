@@ -16,6 +16,7 @@
     "jw-vue-pagination": "^1.0.3",
     "vue": "^2.6.12",
     "vue-axios": "^3.2.4",
+    "vue-lodash": "^2.1.2",
     "vue-router": "^3.5.1",
     "vue-sliding-pagination": "^1.2.0",
     "vuejs-paginate": "^2.1.0"
