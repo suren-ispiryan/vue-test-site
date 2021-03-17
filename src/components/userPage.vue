@@ -52,7 +52,6 @@
       </div>
     </div>
 <!-- end pagination -->
-
   </div>
 </template>
 
@@ -62,23 +61,7 @@ import usersPageComponent from "@/components/usersPageComponent.vue"
 import Vue from "vue"
 
 export default {
-  mounted() {
-    Vue .axios.get('https://reqres.in/api/users?page=2').then((response) => {
-      this.users = response.data.data
-// pagination
-     /*this.count.push(Math.ceil(this.users.length/2))*/
-      this.exampleItems = [...Array( this.count * 10)];
-    })
-  },
-
-  computed: {
-    getUser() {
-      return this.users
-    }
-  },
-
   name: "userPage",
-
   components: {
     usersPageComponent
   },
@@ -87,12 +70,21 @@ export default {
     return {
       users: [],
 // pagination
-      count: [],
       exampleItems: [],
       pageOfItems: []
     }
   },
 
+  mounted() {
+    Vue .axios.get('https://reqres.in/api/users?page=2').then((response) => {
+      this.users = response.data.data
+      // pagination
+      this.exampleItems = [...Array(this.users.length).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
+      // this.users make array
+      console.log(this.users)
+      console.log(typeof(this.users))
+    })
+  },
 
   methods: {
     logOut() {
